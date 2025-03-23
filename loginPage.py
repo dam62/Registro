@@ -15,6 +15,7 @@ def main(page : ft.Page):
         if resultado:
             email_db, passwd_db = resultado[0]
             if usuario == email_db and passwd == passwd_db:
+                ddbb.actualizarFechaLogin(email_db)
                 print("Logueado con éxito")
             else:
                 print("El email o la contraseña es incorrecto")

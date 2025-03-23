@@ -31,6 +31,37 @@ def consultar_registros():
     print(registros)
     return registros
 
+def actualizarFechaLogin(email):
+    conn = connect()
+    try:
+        cursor = conn.cursor()
+        query = "UPDATE registro SET ultimo_login = CURRENT_DATE WHERE email = %s;"
+        cursor.execute(query, (email,))
+        conn.commit()
+        print("Se ha actualizado la fecha del login")
+    except Exception as e:
+        print(f"Error al actualizar fecha_login {e}")
+    finally:
+        if conn:
+            cursor.close()
+            conn.close()
+
+
+def actualizarFechaLogin(email):
+    conn = connect()
+    if not conn:
+        return
+
+    try:
+        with conn.cursor() as cursor:
+            query = "UPDATE registro SET ultimo_login = CURRENT_DATE WHERE email = %s;"
+            cursor.execute(query, (email,))
+            conn.commit()
+            print("Se ha actualizado la fecha del login")
+    except Exception as e:
+        print(f"Error al actualizar fecha_login: {e}")
+    finally:
+        conn.close()
 
 def buscar_usuario(usuario):
     conn = connect()
