@@ -40,7 +40,7 @@ def main(page : ft.Page):
                   passwd_tf,
                   fecha_txt,
                   ft.FilledButton("SELECCIONAR FECHA", on_click=abrir_selector),
-                  ft.FilledButton("LOGIN", on_click=crear_registro),
+                  ft.FilledButton("Registrarse", on_click=crear_registro),
                   volver_btn,],
     )
     page.overlay.append(date_picker)
