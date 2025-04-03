@@ -8,7 +8,7 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="REMOTO" uuid="0c1c84f8-c6db-4fa9-a933-71af396c2e97">
+    <data-source source="LOCAL" name="REMOTO" uuid="4d90d833-0fa3-4f5e-b069-b64e42f5c4d2">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
