@@ -6,7 +6,7 @@ def connect():
         dbname="registros",
         user="postgres",
         password="06_dam62",
-        host="localhost",
+        host="192.160.51.162",
         port="4445"
     )
     return conn
