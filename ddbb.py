@@ -18,7 +18,7 @@ def consultar_registros():
         cursor = conn.cursor()
         query = """
                     SELECT * 
-                    FROM registro;
+                    FROM registros;
                     """
         cursor.execute(query)
         registros = cursor.fetchall()
@@ -35,7 +35,7 @@ def actualizarFechaLogin(email):
     conn = connect()
     try:
         cursor = conn.cursor()
-        query = "UPDATE registro SET ultimo_login = CURRENT_DATE WHERE email = %s;"
+        query = "UPDATE registros SET ultimo_login = CURRENT_DATE WHERE email = %s;"
         cursor.execute(query, (email,))
         conn.commit()
         print("Se ha actualizado la fecha del login")
@@ -54,7 +54,7 @@ def actualizarFechaLogin(email):
 
     try:
         with conn.cursor() as cursor:
-            query = "UPDATE registro SET ultimo_login = CURRENT_DATE WHERE email = %s;"
+            query = "UPDATE registros SET ultimo_login = CURRENT_DATE WHERE email = %s;"
             cursor.execute(query, (email,))
             conn.commit()
             print("Se ha actualizado la fecha del login")
@@ -68,7 +68,7 @@ def buscar_usuario(usuario):
     registro = []
     try:
         cursor = conn.cursor()
-        query = """SELECT email, password FROM registro WHERE email = %s;"""
+        query = """SELECT email, password FROM registros WHERE email = %s;"""
         cursor.execute(query, (usuario,))
         registro = cursor.fetchall()
     except Exception as e:
@@ -87,7 +87,7 @@ def insertar_registro(nombre, apellidos, email, password, fecha_nacimiento):
     try:
         cursor = conn.cursor()
         query = """
-                INSERT INTO registro (nombre, apellidos, email, password, fecha_nacimiento)
+                INSERT INTO registros (nombre, apellidos, email, password, fecha_nacimiento)
                 VALUES (%s, %s, %s, %s, %s);
                 """
         cursor.execute(query, (nombre, apellidos, email, password, fecha_nacimiento))
