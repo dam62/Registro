@@ -7,7 +7,8 @@ def connect():
         user="postgres",
         password="06_dam62",
         host="192.160.51.162",
-        port="5432"
+        port="5432",
+	client_encoding="UTF8"
     )
     return conn
 
@@ -30,6 +31,7 @@ def consultar_registros():
             conn.close()
     print(registros)
     return registros
+
 
 def actualizarFechaLogin(email):
     conn = connect()
