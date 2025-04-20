@@ -18,7 +18,7 @@ def consultar_registros():
         cursor = conn.cursor()
         query = """
                     SELECT * 
-                    FROM registros;
+                    FROM registro;
                     """
         cursor.execute(query)
         registros = cursor.fetchall()
@@ -31,21 +31,6 @@ def consultar_registros():
     print(registros)
     return registros
 
-def actualizarFechaLogin(email):
-    conn = connect()
-    try:
-        cursor = conn.cursor()
-        query = "UPDATE registros SET ultimo_login = CURRENT_DATE WHERE email = %s;"
-        cursor.execute(query, (email,))
-        conn.commit()
-        print("Se ha actualizado la fecha del login")
-    except Exception as e:
-        print(f"Error al actualizar fecha_login {e}")
-    finally:
-        if conn:
-            cursor.close()
-            conn.close()
-
 
 def actualizarFechaLogin(email):
     conn = connect()
@@ -54,7 +39,7 @@ def actualizarFechaLogin(email):
 
     try:
         with conn.cursor() as cursor:
-            query = "UPDATE registros SET ultimo_login = CURRENT_DATE WHERE email = %s;"
+            query = "UPDATE registro SET ultimo_login = CURRENT_DATE WHERE email = %s;"
             cursor.execute(query, (email,))
             conn.commit()
             print("Se ha actualizado la fecha del login")
@@ -68,7 +53,7 @@ def buscar_usuario(usuario):
     registro = []
     try:
         cursor = conn.cursor()
-        query = """SELECT email, password FROM registros WHERE email = %s;"""
+        query = """SELECT email, password FROM registro WHERE email = %s;"""
         cursor.execute(query, (usuario,))
         registro = cursor.fetchall()
     except Exception as e:
@@ -87,7 +72,7 @@ def insertar_registro(nombre, apellidos, email, password, fecha_nacimiento):
     try:
         cursor = conn.cursor()
         query = """
-                INSERT INTO registros (nombre, apellidos, email, password, fecha_nacimiento)
+                INSERT INTO registro (nombre, apellidos, email, password, fecha_nacimiento)
                 VALUES (%s, %s, %s, %s, %s);
                 """
         cursor.execute(query, (nombre, apellidos, email, password, fecha_nacimiento))
