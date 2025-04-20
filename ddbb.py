@@ -31,7 +31,6 @@ def consultar_registros():
     print(registros)
     return registros
 
-
 def actualizarFechaLogin(email):
     conn = connect()
     if not conn:
